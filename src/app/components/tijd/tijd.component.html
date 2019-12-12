@@ -1,0 +1,26 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    Tijd
+  </div>
+  <div class="card-body">
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <button class="btn btn-warning w-100" (click)="setTijd()" [disabled]="!isSessionSet() || !isSessionActive()">Set</button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-success w-100" (click)="addTime()" [disabled]="!isSessionSet() || !isSessionActive()">+</button>
+      </div>
+      <div class="col-md-3">
+        <button class="btn btn-danger w-100" (click)="minTime()" [disabled]="!isSessionSet() || !isSessionActive()">-</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <button class="btn btn-success w-100" (click)="startSession()" [disabled]="!isSessionSet() || (isSessionActive() && isSessionStarted())">Start</button>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-danger w-100" (click)="pauseSession()" [disabled]="!isSessionSet() || isSessionStopped()">Pauzeren</button>
+      </div>
+    </div>
+  </div>
+</div>

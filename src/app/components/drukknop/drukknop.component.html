@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header text-white" [ngClass]="isIngedrukt()?'bg-success':'bg-danger'">
+    Drukknop
+  </div>
+  <div class="card-body">
+    <!--<h5 class="card-title">Status: <span [ngClass]="isIngedrukt()?'text-success':'text-danger'">{{isIngedrukt() ? 'Ingedrukt' : 'Niet ingedrukt'}}</span></h5>-->
+
+    <h5 *ngIf="isIngedrukt()" class="card-title w-100 text-center">Ingedrukt!</h5>
+    <button *ngIf="!isIngedrukt()" (click)="toggle()" class="btn btn-success mr-2 w-100" [disabled]="isIngedrukt()">Indrukken!</button>
+  </div>
+</div>

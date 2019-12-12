@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header bg-dark text-white">
+    Sessie
+  </div>
+  <div class="card-body">
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <h5 class="card-title">Tijd resterend: <span>{{ getHours() | number:'2.0-0'}}</span>:<span>{{ getMinutes() | number:'2.0-0'}}</span>:<span>{{ getSeconds() | number:'2.0-0'}}</span></h5>
+        <p class="card-text">
+          Team naam: <span>{{ getTeamName() }}</span><br>
+          Buit: <span>{{ getBuit() | currency:'EUR':true }}</span><br>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <button class="btn btn-outline-primary mr-2" (click)="newSession()" [disabled]="isSessionActive() && isSessionStarted()">Nieuw</button>
+        <button class="btn btn-outline-danger mr-2" [disabled]="!isSessionActive() && isSessionStopped()">Stop</button>
+        <button class="btn btn-outline-success mr-2" [disabled]="!isSessionSet() || isSessionActive() || !isSessionActive() && isSessionStopped() && (getTeamName() === null || getTeamName() === '')">Opslaan</button>
+      </div>
+    </div>
+
+  </div>
+</div>

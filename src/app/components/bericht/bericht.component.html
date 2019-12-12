@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header bg-primary text-white">
+    Bericht
+  </div>
+  <div class="card-body">
+    <p class="card-text" *ngIf="currentmessage.length > 0">{{ currentmessage }}</p>
+    <input class="form-control mb-2" type="text" placeholder="Schrijf hier een hint/tip..." [(ngModel)]="message">
+    <button class="btn btn-primary mr-2" (click)="plaatsBericht()">Bericht plaatsen</button>
+    <button class="btn btn-danger" (click)="verbergBericht()">Bericht verbergen</button>
+  </div>
+</div>

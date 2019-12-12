@@ -1,0 +1,14 @@
+import {Log} from './log';
+
+export interface Session {
+  teamName?: string;
+  buit: number;
+  elapsedTime: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  logs: Log[];
+  buttonPressed: boolean;
+  isActive: boolean;
+  isStopped: boolean;
+}

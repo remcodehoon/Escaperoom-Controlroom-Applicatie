@@ -8,8 +8,12 @@
         <h5 class="card-title">Tijd resterend: <span>{{ getHours() | number:'2.0-0'}}</span>:<span>{{ getMinutes() | number:'2.0-0'}}</span>:<span>{{ getSeconds() | number:'2.0-0'}}</span></h5>
         <p class="card-text">
           Team naam: <span>{{ getTeamName() }}</span><br>
-          Buit: <span>{{ getBuit() | currency:'EUR':true }}</span><br>
+          <!--Buit: <span>{{ getBuit() | currency:'EUR':true }}</span><br>-->
         </p>
+        <table>
+          <tr><th>Buit</th></tr>
+          <tr><td>{{ getBuit() | currency:'EUR':true }}</td></tr>
+        </table>
       </div>
       <div class="col-md-6">
         <button class="btn btn-outline-primary mr-2" (click)="newSession()" [disabled]="isSessionActive() && isSessionStarted()">Nieuw</button>

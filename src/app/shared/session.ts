@@ -9,6 +9,7 @@ export interface Session {
   seconds: number;
   logs: Log[];
   buttonPressed: boolean;
+  alarmCodeCorrect: boolean;
   isActive: boolean;
   isStopped: boolean;
 }

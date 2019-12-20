@@ -1,3 +1,4 @@
+import { IOStatsComponent } from './components/iostats/iostats.component';
 import { BrowserModule } from '@angular/platform-browser';
 import {LOCALE_ID, NgModule} from '@angular/core';
 
@@ -27,7 +28,8 @@ registerLocaleData(localeNl, 'nl');
     LaserComponent,
     BerichtComponent,
     LogsComponent,
-    DrukknopComponent
+    DrukknopComponent,
+    IOStatsComponent
   ],
   imports: [
     BrowserModule,

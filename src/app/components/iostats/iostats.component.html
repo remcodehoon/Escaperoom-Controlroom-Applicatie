@@ -1,0 +1,17 @@
+<div class="card">
+  <div class="card-header text-white bg-info">
+    IO Stats
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      Drukknop LED: <span [ngClass]="isDrukknopLEDOn()?'text-success':'text-danger'">{{ isDrukknopLEDOn() ? 'Aan' : 'Uit' }}</span><br>
+      Schakelkast: <span [ngClass]="isSchakelkastCorrect()?'text-success':'text-danger'">{{ isSchakelkastCorrect() ? 'Correct' : 'Incorrect' }}</span><br>
+      Rook voeding: <span [ngClass]="isRookPowered()?'text-success':'text-danger'">{{ isRookPowered() ? 'Aan' : 'Uit' }}</span><br>
+      Rook Toggle: <span [ngClass]="isRookToggled()?'text-success':'text-danger'">{{ isRookToggled() ? 'Aan' : 'Uit' }}</span><br>
+      Slot 12V: <span [ngClass]="lockHas12V()?'text-danger':'text-success'">{{ lockHas12V() ? 'Aan' : 'Uit' }}</span><br>
+      Slot 3V: <span [ngClass]="lockHas3V()?'text-danger':'text-success'">{{ lockHas3V() ? 'Aan' : 'Uit' }}</span><br>
+      Sensor 1: <span [ngClass]="isSensor1Onderbroken()?'text-danger':'text-success'">{{ isSensor1Onderbroken() ? 'onderbroken' : 'ononderbroken' }}</span><br>
+      Sensor 2: <span [ngClass]="isSensor2Onderbroken()?'text-danger':'text-success'">{{ isSensor2Onderbroken() ? 'onderbroken' : 'ononderbroken' }}</span><br>
+    </p>
+  </div>
+</div>

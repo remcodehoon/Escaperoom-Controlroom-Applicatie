@@ -1,3 +1,4 @@
+import { IOStats } from './../shared/iostats';
 import { Injectable } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {Session} from '../shared/session';
@@ -20,12 +21,14 @@ export class SessionService {
   private logSource = new Subject<Log>();
   private pinslotSource = new Subject<Status>();
   private laserSource = new Subject<Status>();
+  private ioStatsSource = new Subject<IOStats>();
 
   private timeSubscribtion: Subscription;
   private sessionSubscribtion: Subscription;
   private logSubscribtion: Subscription;
   private pinslotSubscribtion: Subscription;
   private laserSubscribtion: Subscription;
+  private ioStatsSubscribtion: Subscription;
 
   private session: Session;
 
@@ -34,6 +37,12 @@ export class SessionService {
       if (session !== null) {
         this.session = session;
         this.sessionSource.next(session);
+      }
+    });
+
+    http.get<IOStats>(environment.API_IOSTATS_GET).subscribe(stats => {
+      if (stats !== null) {
+        this.ioStatsSource.next(stats);
       }
     });
 
@@ -92,6 +101,11 @@ export class SessionService {
       const status: Status = JSON.parse(message.body);
       this.laserSource.next(status);
     });
+
+    this.ioStatsSubscribtion = this.rxStompService.watch(environment.WS_IOSTATS_TOPIC).subscribe((message: Message) => {
+      const stats: IOStats = JSON.parse(message.body);
+      this.ioStatsSource.next(stats);
+    });
   }
 
   public getSessionObservable(): Observable<Session> {
@@ -108,5 +122,9 @@ export class SessionService {
 
   public getPinslotObservable(): Observable<Status> {
     return this.pinslotSource.asObservable();
+  }
+
+  public getIOStatsObservable(): Observable<IOStats> {
+    return this.ioStatsSource.asObservable();
   }
 }

@@ -10,6 +10,7 @@ import {Message} from '@stomp/stompjs';
 import {TimeChange} from '../shared/TimeChange';
 import {Log} from '../shared/log';
 import {Status} from '../shared/status';
+import {Buit} from '../shared/buit';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class SessionService {
   private pinslotSubscribtion: Subscription;
   private laserSubscribtion: Subscription;
   private ioStatsSubscribtion: Subscription;
+  private buitSubscribtion: Subscription;
 
   private session: Session;
 
@@ -105,6 +107,12 @@ export class SessionService {
     this.ioStatsSubscribtion = this.rxStompService.watch(environment.WS_IOSTATS_TOPIC).subscribe((message: Message) => {
       const stats: IOStats = JSON.parse(message.body);
       this.ioStatsSource.next(stats);
+    });
+
+    this.buitSubscribtion = this.rxStompService.watch(environment.WS_BUIT_TOPIC).subscribe((message: Message) => {
+      const buit: Buit = JSON.parse(message.body);
+      this.session.buit = buit.totaleBuit;
+      this.sessionSource.next(this.session);
     });
   }
 

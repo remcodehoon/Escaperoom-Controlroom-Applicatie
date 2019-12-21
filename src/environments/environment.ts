@@ -26,7 +26,9 @@ export const environment = {
   API_SHOW_MESSAGE: 'http://localhost:8081/message/show/',
   API_HIDE_MESSAGE: 'http://localhost:8081/message/hide',
   API_OPEN_LOCK: 'http://localhost:8081/pinslot/open',
-  API_CLOSE_LOCK: 'http://localhost:8081/pinslot/close'
+  API_CLOSE_LOCK: 'http://localhost:8081/pinslot/close',
+  API_LASERS_ON: 'http://localhost:8081/lasers/aan',
+  API_LASERS_OFF: 'http://localhost:8081/lasers/uit'
 };
 
 /*

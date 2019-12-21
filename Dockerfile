@@ -1,28 +1,11 @@
 FROM node:10 AS builder
-
-# Xvfb
-
-RUN apt-get update -qqy \
-    && apt-get -qqy install xvfb \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
-# Google Chrome
-RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && echo "deb [trusted=yes] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list \
-    && apt-get update -qqy \
-    && apt-get -qqy install google-chrome-stable \
-    && rm /etc/apt/sources.list.d/google-chrome.list \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
-    && sed -i 's/"$HERE\/chrome"/xvfb-run "$HERE\/chrome" --no-sandbox/g' /opt/google/chrome/google-chrome
-
-COPY . /workspace
+RUN apt-get update -y
 WORKDIR /workspace
-
-RUN npm i
-RUN ng build --prod
-
+COPY . /workspace
+RUN npm install
+RUN npm run build.prod
 
 FROM nginx:stable
 ADD nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /workspace/dist/Escaperoom-Controlroom-Applicatie/ /usr/share/nginx/html
 WORKDIR /usr/share/nginx/html
+COPY --from=builder /workspace/dist/Escaperoom-Controlroom-Applicatie .

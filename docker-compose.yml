@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  escaperoom-controlroom:
+    build: .
+    image: stokperdje/escaperoom-controlroom
+    restart: on-failure
+    ports:
+    - 8084:80
+    networks:
+    - escaperoom
+    container_name: escaperoom-controlroom
+
+networks:
+  escaperoom:
+    external: true

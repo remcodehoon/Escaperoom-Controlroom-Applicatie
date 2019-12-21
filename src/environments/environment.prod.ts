@@ -23,5 +23,7 @@ export const environment = {
   API_SHOW_MESSAGE: 'http://192.168.2.5:8081/message/show/',
   API_HIDE_MESSAGE: 'http://192.168.2.5:8081/message/hide',
   API_OPEN_LOCK: 'http://192.168.2.5:8081/pinslot/open',
-  API_CLOSE_LOCK: 'http://192.168.2.5:8081/pinslot/close'
+  API_CLOSE_LOCK: 'http://192.168.2.5:8081/pinslot/close',
+  API_LASERS_ON: 'http://192.168.2.5:8081/lasers/aan',
+  API_LASERS_OFF: 'http://192.168.2.5:8081/lasers/uit'
 };

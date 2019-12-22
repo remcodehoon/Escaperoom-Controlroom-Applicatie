@@ -75,4 +75,8 @@ export class SessieComponent implements OnInit {
     }
   }
 
+  public stopSession(): void {
+    this.http.get<any>(environment.API_SESSION_STOP).subscribe(sessie => {});
+  }
+
 }

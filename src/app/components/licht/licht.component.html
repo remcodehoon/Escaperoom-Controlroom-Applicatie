@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header text-white" [ngClass]="isAan()?'bg-success':'bg-danger'">
+    Verlichting
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Status: <span [ngClass]="isAan()?'text-success':'text-danger'">{{isAan() ? 'Aan' : 'Uit'}}</span></h5>
+
+    <button (click)="toggle()" class="btn btn-success mr-2" [disabled]="isAan()">Aan</button>
+    <button (click)="toggle()" class="btn btn-danger" [disabled]="!isAan()">Uit</button>
+  </div>
+</div>

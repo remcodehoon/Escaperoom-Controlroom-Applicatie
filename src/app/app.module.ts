@@ -16,6 +16,8 @@ import {InjectableRxStompConfig, RxStompService, rxStompServiceFactory} from '@s
 import {RxStompConfig} from './config/RxStompConfig';
 import { DrukknopComponent } from './components/drukknop/drukknop.component';
 import {FormsModule} from '@angular/forms';
+import { LichtComponent } from './components/licht/licht.component';
+import { RookComponent } from './components/rook/rook.component';
 
 registerLocaleData(localeNl, 'nl');
 
@@ -29,7 +31,9 @@ registerLocaleData(localeNl, 'nl');
     BerichtComponent,
     LogsComponent,
     DrukknopComponent,
-    IOStatsComponent
+    IOStatsComponent,
+    LichtComponent,
+    RookComponent
   ],
   imports: [
     BrowserModule,

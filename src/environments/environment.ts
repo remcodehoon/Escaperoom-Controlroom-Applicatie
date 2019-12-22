@@ -19,6 +19,7 @@ export const environment = {
   API_SESSION_START: 'http://localhost:8081/session/start',
   API_SESSION_RESUME: 'http://localhost:8081/tijdscherm/tijd/hervatten',
   API_SESSION_PAUSE: 'http://localhost:8081/tijdscherm/tijd/pauzeren',
+  API_SESSION_STOP: 'http://localhost:8081/session/stop',
   API_IOSTATS_GET: 'http://localhost:8081/iostats',
   API_TIME_SET: 'http://localhost:8081/tijdscherm/tijd/set/',
   API_TIME_PLUS: 'http://localhost:8081/tijdscherm/tijd/plus/',
@@ -28,7 +29,12 @@ export const environment = {
   API_OPEN_LOCK: 'http://localhost:8081/pinslot/open',
   API_CLOSE_LOCK: 'http://localhost:8081/pinslot/close',
   API_LASERS_ON: 'http://localhost:8081/lasers/aan',
-  API_LASERS_OFF: 'http://localhost:8081/lasers/uit'
+  API_LASERS_OFF: 'http://localhost:8081/lasers/uit',
+  API_LIGHTS_ON: 'http://localhost:8081/verlichting/hoofdverlichting/aan',
+  API_LIGHTS_OFF: 'http://localhost:8081/verlichting/hoofdverlichting/uit',
+  API_ROOK_ON: 'http://localhost:8081/rook/aan',
+  API_ROOK_OFF: 'http://localhost:8081/rook/uit',
+  API_ROOK_TOGGLE: 'http://localhost:8081/rook/toggle'
 };
 
 /*

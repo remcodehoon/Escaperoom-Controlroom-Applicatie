@@ -31,5 +31,6 @@ export const environment = {
   API_LIGHTS_OFF: 'http://192.168.2.5:8081/verlichting/hoofdverlichting/uit',
   API_ROOK_ON: 'http://192.168.2.5:8081/rook/aan',
   API_ROOK_OFF: 'http://192.168.2.5:8081/rook/uit',
-  API_ROOK_TOGGLE: 'http://192.168.2.5:8081/rook/toggle'
+  API_ROOK_TOGGLE: 'http://192.168.2.5:8081/rook/toggle',
+  API_DRUKKNOP_PRESS: 'http://192.168.2.5:8081/session/drukknop'
 };

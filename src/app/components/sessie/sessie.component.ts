@@ -4,6 +4,7 @@ import {SessionService} from '../../services/session.service';
 import {isNullOrUndefined} from 'util';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {IOStats} from '../../shared/iostats';
 
 @Component({
   selector: 'eca-sessie',
@@ -13,6 +14,7 @@ import {HttpClient} from '@angular/common/http';
 export class SessieComponent implements OnInit {
 
   private session: Session;
+  private ioStats: IOStats;
 
   constructor(private sessionService: SessionService, private http: HttpClient) {
 
@@ -20,6 +22,10 @@ export class SessieComponent implements OnInit {
     sessionService.getSessionObservable().subscribe(session => {
       this.session = session;
       console.log(session);
+    });
+
+    sessionService.getIOStatsObservable().subscribe(stats => {
+      this.ioStats = stats;
     });
   }
 
@@ -67,11 +73,15 @@ export class SessieComponent implements OnInit {
   }
 
   public newSession(): void {
-    const teamName = prompt('Geef een team naam:');
-    if (teamName !== null && teamName !== undefined) {
-      this.http.get<any>(environment.API_SESSION_NEW + teamName).subscribe(sessie => {});
+    if (!isNullOrUndefined(this.ioStats) && !this.ioStats.schakelkast) {
+      const teamName = prompt('Geef een team naam:');
+      if (teamName !== null && teamName !== undefined) {
+        this.http.get<any>(environment.API_SESSION_NEW + teamName).subscribe(sessie => {});
+      } else {
+        alert('Geef een teamnaam op!');
+      }
     } else {
-      alert('Geef een teamnaam op!');
+      alert('Zet eerst alle pinnen van de schakelkast in de bruine kast omlaag, voordat je een nieuwe sessie start!');
     }
   }
 

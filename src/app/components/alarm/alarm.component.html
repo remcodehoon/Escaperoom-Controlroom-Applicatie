@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-header text-white" [ngClass]="isCorrect()?'bg-success':'bg-danger'">
+    Alarm
+  </div>
+  <div class="card-body">
+    <!--<h5 class="card-title">Status: <span [ngClass]="isIngedrukt()?'text-success':'text-danger'">{{isIngedrukt() ? 'Ingedrukt' : 'Niet ingedrukt'}}</span></h5>-->
+
+    <h5 *ngIf="isCorrect()" class="card-title w-100 text-center">Uitgeschakeld</h5>
+    <button *ngIf="!isCorrect()" (click)="toggle()" class="btn btn-success mr-2 w-100" [disabled]="isCorrect()">Uitschakelen</button>
+  </div>
+</div>

@@ -21,7 +21,6 @@ export class SessieComponent implements OnInit {
     // Inkomende sessie wijzigingen
     sessionService.getSessionObservable().subscribe(session => {
       this.session = session;
-      console.log(session);
     });
 
     sessionService.getIOStatsObservable().subscribe(stats => {
@@ -64,6 +63,10 @@ export class SessieComponent implements OnInit {
     return isNullOrUndefined(this.session) ? 0 : this.session.elapsedTime;
   }
 
+  public isSaved(): boolean {
+    return isNullOrUndefined(this.session.isSaved) ? false : this.session.isSaved;
+  }
+
   public getBuit(): number {
     return isNullOrUndefined(this.session) ? 0 : this.session.buit;
   }
@@ -87,6 +90,23 @@ export class SessieComponent implements OnInit {
 
   public stopSession(): void {
     this.http.get<any>(environment.API_SESSION_STOP).subscribe(sessie => {});
+
+    const save = confirm('Wil je de sessie opslaan en op de website tonen?');
+    if (save) {
+      this.saveSession();
+    }
+  }
+
+  public saveSession(): void {
+    this.http.get<Session>(environment.API_SESSION_GET).subscribe(session => {
+      if (session !== null) {
+        this.session = session;
+        this.http.post('https://www.stokperdje.nl/escaperoom_post.php', JSON.stringify(this.session)).subscribe(resp => {
+          alert('Sessie opgeslagen!');
+          this.session.isSaved = true;
+        });
+      }
+    });
   }
 
 }

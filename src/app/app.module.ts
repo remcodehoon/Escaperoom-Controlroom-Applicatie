@@ -18,6 +18,7 @@ import { DrukknopComponent } from './components/drukknop/drukknop.component';
 import {FormsModule} from '@angular/forms';
 import { LichtComponent } from './components/licht/licht.component';
 import { RookComponent } from './components/rook/rook.component';
+import { AlarmComponent } from './components/alarm/alarm.component';
 
 registerLocaleData(localeNl, 'nl');
 
@@ -33,7 +34,8 @@ registerLocaleData(localeNl, 'nl');
     DrukknopComponent,
     IOStatsComponent,
     LichtComponent,
-    RookComponent
+    RookComponent,
+    AlarmComponent
   ],
   imports: [
     BrowserModule,

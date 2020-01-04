@@ -12,4 +12,5 @@ export interface Session {
   alarmCodeCorrect: boolean;
   isActive: boolean;
   isStopped: boolean;
+  isSaved?: boolean;
 }

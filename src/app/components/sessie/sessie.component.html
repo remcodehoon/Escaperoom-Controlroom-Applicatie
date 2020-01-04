@@ -22,7 +22,7 @@
           <div class="col-md-12"><button class="btn btn-outline-danger mr-2" (click)="stopSession()" [disabled]="!isSessionActive() && isSessionStopped()">Stop</button></div>
         </div>
         <div class="row mb-2">
-          <div class="col-md-12"><button class="btn btn-outline-success mr-2" [disabled]="!isSessionSet() || isSessionActive() || !isSessionActive() && isSessionStopped() && (getTeamName() === null || getTeamName() === '')">Opslaan</button></div>
+          <div class="col-md-12"><button class="btn btn-outline-success mr-2" (click)="saveSession()" [disabled]="isSaved() || !isSessionSet() || isSessionActive() || !isSessionActive() && isSessionStopped() && (getTeamName() === null || getTeamName() === '')">Opslaan</button></div>
         </div>
       </div>
     </div>

@@ -35,7 +35,8 @@ export const environment = {
   API_ROOK_ON: 'http://localhost:8081/rook/aan',
   API_ROOK_OFF: 'http://localhost:8081/rook/uit',
   API_ROOK_TOGGLE: 'http://localhost:8081/rook/toggle',
-  API_DRUKKNOP_PRESS: 'http://localhost:8081/session/drukknop'
+  API_DRUKKNOP_PRESS: 'http://localhost:8081/session/drukknop',
+  API_ALARM_OFF: 'http://localhost:8081/session/alarmoff'
 };
 
 /*

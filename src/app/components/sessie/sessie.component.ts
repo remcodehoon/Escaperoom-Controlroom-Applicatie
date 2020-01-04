@@ -64,7 +64,7 @@ export class SessieComponent implements OnInit {
   }
 
   public isSaved(): boolean {
-    return isNullOrUndefined(this.session.isSaved) ? false : this.session.isSaved;
+    return isNullOrUndefined(this.session) ? false : this.session.isSaved;
   }
 
   public getBuit(): number {

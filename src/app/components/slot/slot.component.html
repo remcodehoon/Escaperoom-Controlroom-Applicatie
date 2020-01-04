@@ -5,7 +5,7 @@
   <div class="card-body">
     <h5 class="card-title">Status: <span [ngClass]="(isOpen()==true)?'text-success':'text-danger'">{{isOpen() ? 'Open' : 'Op slot'}}</span></h5>
 
-    <button (click)="toggle()" class="btn btn-success mr-2" [disabled]="isOpen()">Openen</button>
-    <button (click)="toggle()" class="btn btn-danger" [disabled]="!isOpen()">Sluiten</button>
+    <button (click)="open()" class="btn btn-success mr-2" [disabled]="isOpen()">Openen</button>
+    <button (click)="close()" class="btn btn-danger" [disabled]="!isOpen()">Sluiten</button>
   </div>
 </div>

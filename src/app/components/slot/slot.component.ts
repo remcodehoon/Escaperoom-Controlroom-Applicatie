@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Session} from '../../shared/session';
 import {environment} from '../../../environments/environment';
 import {isNullOrUndefined} from 'util';
+import {IOStats} from '../../shared/iostats';
 
 @Component({
   selector: 'eca-slot',
@@ -12,29 +13,27 @@ import {isNullOrUndefined} from 'util';
 })
 export class SlotComponent implements OnInit {
 
-  // Open = false, Dicht = true
-  private status: boolean
+  private ioStats: IOStats;
 
   constructor(private sessionService: SessionService, private http: HttpClient) {
-    // Inkomende sessie wijzigingen
-    sessionService.getPinslotObservable().subscribe(status => {
-      this.status = status.status;
+    sessionService.getIOStatsObservable().subscribe(stats => {
+      this.ioStats = stats;
     });
   }
 
   ngOnInit() {
   }
 
-  public toggle(): void {
-    if (this.status === false) {
-      this.http.get<any>(environment.API_CLOSE_LOCK).subscribe(sessie => {});
-    } else {
-      this.http.get<any>(environment.API_OPEN_LOCK).subscribe(sessie => {});
-    }
+  public open(): void {
+    this.http.get<any>(environment.API_OPEN_LOCK).subscribe(sessie => {});
+  }
+
+  public close(): void {
+    this.http.get<any>(environment.API_CLOSE_LOCK).subscribe(sessie => {});
   }
 
   public isOpen(): boolean {
-    return !this.status;
+    return !this.ioStats.slot3V;
   }
 
 }
